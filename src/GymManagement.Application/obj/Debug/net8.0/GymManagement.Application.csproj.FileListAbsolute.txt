@@ -1,0 +1,15 @@
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\bin\Debug\net8.0\GymManagement.Application.deps.json
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\bin\Debug\net8.0\GymManagement.Application.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\bin\Debug\net8.0\GymManagement.Application.pdb
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\bin\Debug\net8.0\GymManagement.Domain.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\bin\Debug\net8.0\GymManagement.Domain.pdb
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymManagement.Application.csproj.AssemblyReference.cache
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymManagement.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymManagement.Application.AssemblyInfoInputs.cache
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymManagement.Application.AssemblyInfo.cs
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymManagement.Application.csproj.CoreCompileInputs.cache
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymManag.E831DFE7.Up2Date
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymManagement.Application.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\refint\GymManagement.Application.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymManagement.Application.pdb
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\ref\GymManagement.Application.dll
