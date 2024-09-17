@@ -1,3 +1,7 @@
+using GymManagement.Application.Services;
+using GymManagement.Contracts.Subscription;
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,29 +20,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// var summaries = new[]
-// {
-//     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-// };
+app.MapPost("/Subscriptions", ([FromBody] CreateSubscriptionRequest request , ISubscriptionService subscriptionService) =>
+{
 
-// app.MapGet("/weatherforecast", () =>
-// {
-//     var forecast =  Enumerable.Range(1, 5).Select(index =>
-//         new WeatherForecast
-//         (
-//             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-//             Random.Shared.Next(-20, 55),
-//             summaries[Random.Shared.Next(summaries.Length)]
-//         ))
-//         .ToArray();
-//     return forecast;
-// })
-// .WithName("GetWeatherForecast")
-// .WithOpenApi();
+    var subscriptionId = subscriptionService.CreateSubscription(request.SubscriptionType.ToString(), request.AdminId);
+
+    var response = new SubscriptionResponse(subscriptionId,request.SubscriptionType);
+
+    return Results.Ok(response);
+})
+.WithName("CreateSubscription")
+.WithOpenApi();
 
 app.Run();
-
-// record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-// {
-//     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-// }
