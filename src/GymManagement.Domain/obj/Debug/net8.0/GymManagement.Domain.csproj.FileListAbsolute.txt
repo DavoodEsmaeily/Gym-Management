@@ -9,3 +9,4 @@ C:\Users\d-esmaeily\courses\src\GymManagement.Domain\obj\Debug\net8.0\GymManagem
 C:\Users\d-esmaeily\courses\src\GymManagement.Domain\obj\Debug\net8.0\refint\GymManagement.Domain.dll
 C:\Users\d-esmaeily\courses\src\GymManagement.Domain\obj\Debug\net8.0\GymManagement.Domain.pdb
 C:\Users\d-esmaeily\courses\src\GymManagement.Domain\obj\Debug\net8.0\ref\GymManagement.Domain.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Domain\obj\Debug\net8.0\GymManagement.Domain.sourcelink.json

@@ -13,3 +13,4 @@ C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymMa
 C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\refint\GymManagement.Application.dll
 C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymManagement.Application.pdb
 C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\ref\GymManagement.Application.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Application\obj\Debug\net8.0\GymManagement.Application.sourcelink.json

@@ -35,3 +35,4 @@ C:\Users\d-esmaeily\courses\src\GymManagement.Api\obj\Debug\net8.0\refint\GymMan
 C:\Users\d-esmaeily\courses\src\GymManagement.Api\obj\Debug\net8.0\GymManagement.Api.pdb
 C:\Users\d-esmaeily\courses\src\GymManagement.Api\obj\Debug\net8.0\GymManagement.Api.genruntimeconfig.cache
 C:\Users\d-esmaeily\courses\src\GymManagement.Api\obj\Debug\net8.0\ref\GymManagement.Api.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Api\obj\Debug\net8.0\GymManagement.Api.sourcelink.json
