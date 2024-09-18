@@ -1,6 +1,11 @@
-using GymManagement.Application.Services;
+
 using GymManagement.Contracts.Subscription;
 using Microsoft.AspNetCore.Mvc;
+using GymManagement.Application;
+using GymManagement.Infrastructure;
+using MediatR;
+using GymManagement.Application.Subscriptions.Commands.CreateSubscription;
+using ErrorOr;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApplication()
+    .AddInfrastructure();
 
 var app = builder.Build();
 
@@ -19,15 +27,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.MapPost("/Subscriptions", ([FromBody] CreateSubscriptionRequest request , ISubscriptionService subscriptionService) =>
+app.MapPost("/Subscriptions", async (CreateSubscriptionRequest request, ISender sender) =>
 {
+    var command = new CreateSubscriptionCommand(request.SubscriptionType.ToString(), request.AdminId);
 
-    var subscriptionId = subscriptionService.CreateSubscription(request.SubscriptionType.ToString(), request.AdminId);
+    var createSubscriptionResult = await sender.Send(command);
 
-    var response = new SubscriptionResponse(subscriptionId,request.SubscriptionType);
-
-    return Results.Ok(response);
+    return createSubscriptionResult.MatchFirst(
+            guid => Results.Ok(new SubscriptionResponse(createSubscriptionResult.Value, request.SubscriptionType)),
+            error => Results.Problem());
 })
 .WithName("CreateSubscription")
 .WithOpenApi();

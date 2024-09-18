@@ -36,3 +36,10 @@ C:\Users\d-esmaeily\courses\src\GymManagement.Api\obj\Debug\net8.0\GymManagement
 C:\Users\d-esmaeily\courses\src\GymManagement.Api\obj\Debug\net8.0\GymManagement.Api.genruntimeconfig.cache
 C:\Users\d-esmaeily\courses\src\GymManagement.Api\obj\Debug\net8.0\ref\GymManagement.Api.dll
 C:\Users\d-esmaeily\courses\src\GymManagement.Api\obj\Debug\net8.0\GymManagement.Api.sourcelink.json
+C:\Users\d-esmaeily\courses\src\GymManagement.Api\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Api\bin\Debug\net8.0\GymManagement.Contracts.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Api\bin\Debug\net8.0\GymManagement.Contracts.pdb
+C:\Users\d-esmaeily\courses\src\GymManagement.Api\bin\Debug\net8.0\MediatR.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Api\bin\Debug\net8.0\MediatR.Contracts.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Api\bin\Debug\net8.0\GymManagement.Infrastructure.dll
+C:\Users\d-esmaeily\courses\src\GymManagement.Api\bin\Debug\net8.0\GymManagement.Infrastructure.pdb

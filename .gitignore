@@ -41,3 +41,34 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+
+bin/
+obj/
+*.pdp
+*.dll
+# Ignore build directories
+bin/
+obj/
+
+# Ignore all DLLs and executables
+*.dll
+*.exe
+
+# Ignore all PDB (debugging) files
+*.pdb
+
+# Ignore dependency and cache files
+*.deps.json
+*.cache
+*.dgspec.json
+*.assets.cache
+*.nuget.cache
+*.FileListAbsolute.txt
+*.AssemblyInfo.cs
+*.csproj.AssemblyReference.cache
+*.csproj.CoreCompileInputs.cache
+*.refint/*.dll
+
+
+
+
