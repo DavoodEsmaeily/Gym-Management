@@ -1,12 +1,32 @@
-﻿using MediatR;
+﻿using GymManagement.Application.Common.Interfaces;
 
 namespace GymManagement.Application.Subscriptions.Commands.CreateSubscription
 {
-    public class CreateSubscriptionCommandHandler : IRequestHandler<CreateSubscriptionCommand, ErrorOr<Guid>>
+    public class CreateSubscriptionCommandHandler : IRequestHandler<CreateSubscriptionCommand, ErrorOr<Subscription>>
     {
-        public async Task<ErrorOr<Guid>> Handle(CreateSubscriptionCommand request, CancellationToken cancellationToken)
+        private ISubscriptionRepository _subscriptionRepository;
+        private IUnitOfWork _unitOfWork;
+
+
+        public CreateSubscriptionCommandHandler(ISubscriptionRepository subscriptionRepository, IUnitOfWork unitOfWork)
         {
-            return Guid.NewGuid();
+            _subscriptionRepository = subscriptionRepository;
+            _unitOfWork = unitOfWork;
+        }
+
+        public async Task<ErrorOr<Subscription>> Handle(CreateSubscriptionCommand request, CancellationToken cancellationToken)
+        {
+
+            var subscription = new Subscription
+            {
+                Id = request.Id,
+                SubscriptonType = request.SubscriptionType,
+            };
+
+            await _subscriptionRepository.CreateSubscriptionAsync(subscription);
+            await _unitOfWork.CommitChangesAsync();
+
+            return subscription;
         }
     }
 }

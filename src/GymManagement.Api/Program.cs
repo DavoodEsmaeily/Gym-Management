@@ -34,7 +34,7 @@ app.MapPost("/Subscriptions", async (CreateSubscriptionRequest request, ISender 
     var createSubscriptionResult = await sender.Send(command);
 
     return createSubscriptionResult.MatchFirst(
-            guid => Results.Ok(new SubscriptionResponse(createSubscriptionResult.Value, request.SubscriptionType)),
+            subscription => Results.Ok(new SubscriptionResponse(subscription.Id.Value, request.SubscriptionType)),
             error => Results.Problem());
 })
 .WithName("CreateSubscription")
