@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using GymManagement.Application.Common.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GymManagement.Application
 {
@@ -10,6 +11,8 @@ namespace GymManagement.Application
             {
                 option.RegisterServicesFromAssemblyContaining(typeof(DependencyInjection));
             });
+
+            
 
             return services;
         }

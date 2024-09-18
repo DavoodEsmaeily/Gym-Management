@@ -2,6 +2,8 @@
 {
     public interface ISubscriptionRepository
     {
-        Task CreateSubscriptionAsync(Subscription subscription);    
+        Task CreateSubscriptionAsync(Subscription subscription); 
+        Task<Subscription?> GetSubscriptionByIdAsync(string subscriptionId);
+        Task<List<Subscription>> SubscriptionsAsync();
     }
 }
