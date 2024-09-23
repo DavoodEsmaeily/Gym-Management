@@ -7,6 +7,7 @@ using MediatR;
 using GymManagement.Application.Subscriptions.Commands.CreateSubscription;
 using GymManagement.Application.Subscriptions.Queries.GetSubscription;
 using GymManagement.Application.Subscriptions.Queries.ListSubscription;
+using DomianSubscriptionType = GymManagement.Domain.Subscriptions.SubscriptionType;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,12 +31,18 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapPost("/Subscriptions", async (CreateSubscriptionRequest request, ISender sender) =>
 {
-    var command = new CreateSubscriptionCommand(request.SubscriptionType.ToString());
+    DomianSubscriptionType.FromName(request.SubscriptionType.ToString());
+    if (!DomianSubscriptionType.TryFromName(request.SubscriptionType.ToString() , out DomianSubscriptionType subscriptionType))
+    {
+
+        return Results.Problem(statusCode: StatusCodes.Status400BadRequest, detail: "Invalid Subscription Type");
+    }
+    var command = new CreateSubscriptionCommand(subscriptionType , request.AdminId);
 
     var createSubscriptionResult = await sender.Send(command);
 
     return createSubscriptionResult.MatchFirst(
-            subscription => Results.Ok(new SubscriptionResponse(subscription.Id.Value, request.SubscriptionType)),
+            subscription => Results.Ok(new SubscriptionResponse(subscription.Id, subscriptionType.Name)),
             error => Results.Problem());
 })
 .WithName("CreateSubscription")
@@ -48,7 +55,7 @@ app.MapGet("/Subscriptions/GetSubscription", async ([FromQuery] string Subscript
     var createSubscriptionResult = await sender.Send(subscriptionQuery);
 
     return createSubscriptionResult.MatchFirst(
-            subscription => Results.Ok(new SubscriptionResponse(Guid.Parse(SubscriptionId), Enum.Parse<SubscriptionType>(subscription?.SubscriptonType?.ToString() ?? "Free"))),
+            subscription => Results.Ok(new SubscriptionResponse(Guid.Parse(SubscriptionId), subscription.SubscriptonType.Name)),
             error => Results.Problem());
 })
 .WithName("GetSubscription/{SubscriptionId:string}")
@@ -62,8 +69,8 @@ app.MapGet("/Subscriptions/ListSubscription", async (ISender sender) =>
     var createSubscriptionResult = await sender.Send(listSubscriptionQuery);
     return createSubscriptionResult.MatchFirst(
         subscriptions =>
-            Results.Ok(subscriptions.Select(x =>
-                new SubscriptionResponse(x.Id.Value, Enum.Parse<SubscriptionType>(x?.SubscriptonType?.ToString() ?? "Free")))),
+            Results.Ok(subscriptions.Select(x => 
+                new SubscriptionResponse(x.Id, x.SubscriptonType.Name))),
         error =>
         {
             // Log error details here

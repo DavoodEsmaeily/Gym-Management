@@ -1,29 +1,34 @@
 ﻿using GymManagement.Application.Common.Interfaces;
 using GymManagement.Domain.Subscriptions;
+using GymManagement.Infrastructure.Common.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace GymManagement.Infrastructure.Subscriptions.Persistence
 {
     public class SubscriptionRepository : ISubscriptionRepository
     {
 
-        private readonly static List<Subscription> _subscriptions = new();   
-        public async Task CreateSubscriptionAsync(Subscription subscription)
+        private readonly GymManagementDbContext _context = null!;
+
+        public SubscriptionRepository(GymManagementDbContext context)
         {
-            _subscriptions.Add(subscription);
-           await Task.CompletedTask;
+            _context = context;
         }
 
-        public Task<Subscription?> GetSubscriptionByIdAsync(string subscriptionId)
+        public async Task CreateSubscriptionAsync(Subscription subscription)
         {
-            var subscription = _subscriptions.FirstOrDefault(x => x.Id == Guid.Parse(subscriptionId));
+            await _context.Subscriptions.AddAsync(subscription);
 
-            return Task.FromResult(subscription);
+        }
+
+        public async Task<Subscription?> GetSubscriptionByIdAsync(string subscriptionId)
+        {
+            return await _context.Subscriptions.FirstOrDefaultAsync(x => x.Id == Guid.Parse(subscriptionId));
         }
 
         public async Task<List<Subscription>> SubscriptionsAsync()
         {
-           var subscriptions =  _subscriptions.ToList();
-            return subscriptions;
+            return await _context.Subscriptions.ToListAsync();
         }
     }
 }
